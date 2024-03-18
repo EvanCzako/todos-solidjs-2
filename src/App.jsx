@@ -86,10 +86,58 @@ function App() {
     setState(newState);
   };
 
+  const moveGroupDown = (groupIdx) => {
+    if(state.groups.length <= 1 || groupIdx >= state.groups.length - 1){
+      return;
+    }
+    const newGroups = [...state.groups];
+    [newGroups[groupIdx], newGroups[groupIdx+1]] = [newGroups[groupIdx+1], newGroups[groupIdx]];
+    const newState = {
+      ...state,
+      groups: newGroups
+    }
+    setState(newState);
+  };
+
+  const moveGroupUp = (groupIdx) => {
+    if(state.groups.length <= 1 || groupIdx === 0){
+      return;
+    }
+    const newGroups = [...state.groups];
+    [newGroups[groupIdx], newGroups[groupIdx-1]] = [newGroups[groupIdx-1], newGroups[groupIdx]];
+    const newState = {
+      ...state,
+      groups: newGroups
+    }
+    setState(newState);
+  };
+
+  const moveTodoDown = (groupIdx, todoIdx) => {
+    if(state.groups[groupIdx].todos.length <= 1 || todoIdx >= state.groups[groupIdx].todos.length - 1){
+      return;
+    }
+    const newTodos = [...state.groups[groupIdx].todos];
+    [newTodos[todoIdx], newTodos[todoIdx+1]] = [newTodos[todoIdx+1], newTodos[todoIdx]];
+    setState("groups",groupIdx,"todos",newTodos);
+  };
+
+  const moveTodoUp = (groupIdx, todoIdx) => {
+    if(state.groups[groupIdx].todos.length <= 1 || todoIdx === 0){
+      return;
+    }
+    const newTodos = [...state.groups[groupIdx].todos];
+    [newTodos[todoIdx], newTodos[todoIdx-1]] = [newTodos[todoIdx-1], newTodos[todoIdx]];
+    setState("groups",groupIdx,"todos",newTodos);
+  };
+
   return (
     <div class={styles.App}>
       <For each={state.groups}>{(group, groupIdx) => 
-        <GroupContainer name={group.name} addTodo={addTodo} modTodo={modTodo} groupIdx={groupIdx()} todos={group.todos}/>
+      <div>
+        <GroupContainer name={group.name} addTodo={addTodo} modTodo={modTodo} groupIdx={groupIdx()} todos={group.todos} moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}/>
+        <button onClick={() => {moveGroupUp(groupIdx())}}>-^- Move group up -^-</button>
+        <button onClick={() => {moveGroupDown(groupIdx())}}>-V- Move group down -V-</button>
+      </div>
       }
       </For>
       <GroupForm addGroup={addGroup}/>

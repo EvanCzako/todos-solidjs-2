@@ -1,4 +1,10 @@
 body {
   background-color: black;
   color:blueviolet;
+  font-size: 25px;
+}
+
+h1 {
+  font: bold;
+  font-size: 40px;
 }
