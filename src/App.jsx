@@ -50,16 +50,20 @@ function App() {
   const [state, setState] = createStore(initState);
 
   const addTodo = (text, groupIdx) => {
-    const newState = {
-      groups: [
-        ...state.groups
-      ]
-    };
-    newState.groups[groupIdx].todos.push({
+    
+    const newTodo = {
       text,
-      completed: false
-    })
-    setState(newState);
+      completed: false,
+      id: todoId
+    };
+    todoId++;
+    
+    const newTodos = [
+      ...state.groups[groupIdx].todos,
+      newTodo
+    ]
+
+    setState("groups",groupIdx,"todos",newTodos);
   };
 
   const modTodo = (groupIdx, todoIdx, completedVal) => {
