@@ -62,6 +62,10 @@ function App() {
     setState(newState);
   };
 
+  const modTodo = (groupIdx, todoIdx, completedVal) => {
+    setState("groups",groupIdx,"todos",todoIdx,"completed",completedVal);
+  }
+
   const addGroup = (name) => {
     const newGroup = {
       name,
@@ -81,7 +85,7 @@ function App() {
   return (
     <div class={styles.App}>
       <For each={state.groups}>{(group, groupIdx) => 
-        <GroupContainer name={group.name} addTodo={addTodo} groupIdx={groupIdx()} todos={group.todos}/>
+        <GroupContainer name={group.name} addTodo={addTodo} modTodo={modTodo} groupIdx={groupIdx()} todos={group.todos}/>
       }
       </For>
       <GroupForm addGroup={addGroup}/>
