@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background-color: black;
+  color:rgb(141, 3, 255);
+  font-size: 25px;
+}
+
+h1 {
+  font: bold;
+  font-size: 40px;
+}
+
+.group-wrapper {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(195, 0, 255);
+}
+
+.todos-list-wrapper {
+  border: 2px solid rgb(92, 31, 41);
+}
+
+body {
+  background-color: black;
+  color:rgb(141, 3, 255);
+  font-size: 25px;
+}
+
+button {
+  background-color: rgb(40, 40, 40);
+  color: white;
+}
