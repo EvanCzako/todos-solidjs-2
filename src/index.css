@@ -27,10 +27,12 @@ h1 {
   border-radius: 5px;
   border-style: solid;
   border-color: rgb(195, 0, 255);
+  margin: 4px;
 }
 
 .todos-list-wrapper {
   border: 2px solid rgb(92, 31, 41);
+  margin: 2px;
 }
 
 body {

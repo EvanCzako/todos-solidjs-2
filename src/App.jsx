@@ -133,11 +133,11 @@ function App() {
   return (
     <div class={styles.App}>
       <For each={state.groups}>{(group, groupIdx) => 
-      <div class="group-wrapper">
-        <GroupContainer name={group.name} addTodo={addTodo} modTodo={modTodo} groupIdx={groupIdx()} todos={group.todos} moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}/>
-        <button onClick={() => {moveGroupUp(groupIdx())}}>-^- Move group up -^-</button>
-        <button onClick={() => {moveGroupDown(groupIdx())}}>-V- Move group down -V-</button>
-      </div>
+        <div class="group-wrapper">
+          <GroupContainer name={group.name} addTodo={addTodo} modTodo={modTodo} groupIdx={groupIdx()} todos={group.todos} moveTodoUp={moveTodoUp} moveTodoDown={moveTodoDown}/>
+          <button onClick={() => {moveGroupUp(groupIdx())}}>-^- Move group up -^-</button>
+          <button onClick={() => {moveGroupDown(groupIdx())}}>-V- Move group down -V-</button>
+        </div>
       }
       </For>
       <GroupForm addGroup={addGroup}/>
