@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import styles from './App.module.css';
+import { For } from "solid-js";
+import { createStore } from "solid-js/store";
+import GroupContainer from './GroupContainer';
+import GroupForm from './GroupForm';
 
 const initState = {
   groups: [
@@ -38,7 +42,8 @@ const initState = {
   ]
 }
 
-const todoId = 4;
+let todoId = 4;
+let groupId = 2;
 
 function App() {
 
@@ -55,11 +60,31 @@ function App() {
       completed: false
     })
     setState(newState);
-  }
+  };
+
+  const addGroup = (name) => {
+    const newGroup = {
+      name,
+      todos: [],
+      id: groupId
+    };
+    groupId++;
+    const newState = {
+      groups: [
+        ...state.groups,
+        newGroup
+      ]
+    }
+    setState(newState);
+  };
 
   return (
     <div class={styles.App}>
-      
+      <For each={state.groups}>{(group, groupIdx) => 
+        <GroupContainer name={group.name} addTodo={addTodo} groupIdx={groupIdx()} todos={group.todos}/>
+      }
+      </For>
+      <GroupForm addGroup={addGroup}/>
     </div>
   );
 }

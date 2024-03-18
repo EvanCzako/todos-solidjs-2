@@ -1,9 +1,10 @@
-function App() {
+function GroupContainer(props) {
+
     return (
-      <div class={styles.App}>
-        
+      <div>
+        {props.name}
       </div>
     );
   }
   
-  export default App;
+  export default GroupContainer;
